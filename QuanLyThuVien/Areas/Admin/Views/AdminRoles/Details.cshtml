@@ -1,0 +1,31 @@
+﻿@model QuanLyThuVien.Models.Roles
+
+@{
+    ViewData["Title"] = "Thông tin quyền truy cập";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="tab-pane fade profile-overview active show" id="profile-overview" role="tabpanel">
+    <h5 class="card-title">Thông tin quyền truy cập</h5>
+
+    <div class="row">
+        <div class="col-lg-3 col-md-4 label ">ID:</div>
+        <div class="col-lg-9 col-md-8">@Model.RoleId</div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3 col-md-4 label">Tên quyền truy cập:</div>
+        <div class="col-lg-9 col-md-8">@Model.RoleName</div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3 col-md-4 label">Mô tả:</div>
+        <div class="col-lg-9 col-md-8">@Model.Description</div>
+    </div>
+<!--    <div class="row">
+        <button class="btn btn-secondary" asp-action="Index">Quay lại</button>
+    </div> -->
+    
+    <div>
+        <a class="btn btn-secondary" asp-action="Index">Quay lại</a>
+    </div>
+</div>

@@ -1,0 +1,163 @@
+﻿@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<QuanLyThuVien.Models.Products>
+@{
+    int CurrentPage = ViewBag.CurrentPage;
+    ViewData["Title"] = "Danh sách sản phẩm" + CurrentPage;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Danh sách thư viện sách: page @CurrentPage</h3>
+<div class="d-md-flex">
+    <div class="col-lg-8">
+        <div class="search-bar">
+            <form class="search-form d-flex align-items-center" method="POST" action="#">
+                <input type="text" name="query" placeholder="Nhập tên sách..." title="Nhập từ khóa tìm kiếm">
+                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+            </form>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <a class="btn btn-primary" asp-action="Create">Thêm dữ liệu kho sách</a>
+    </div>
+</div>
+@*<p>
+    <a asp-action="Create">Thêm dữ liệu kho sách</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Tên sách
+            </th>
+            <th>
+                Thể loại
+            </th>
+            <th>
+                Mô tả DescriptionBooks
+            </th>
+            <th>
+                Giá
+            </th>
+            <th>
+                Giá ưu đãi
+            </th>
+            <th>
+                Thumb
+            </th>
+            <th>
+                Video
+            </th>
+            <th>
+                Ngày thêm
+            </th>
+            <th>
+                Lần sửa cuối
+            </th>
+            <th>
+                BestSellers
+            </th>
+            <th>
+                HomeFlag
+            </th>
+            <th>
+                Active
+            </th>
+            <th>
+                Tags
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Alias
+            </th>
+            <th>
+                MetaDesc
+            </th>
+            <th>
+                MetaKey
+            </th>
+            <th>
+                UnitslnStock
+            </th>
+            <th>
+                Cat
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortDesc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Thumb)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Video)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCreated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateModified)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BestSellers)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HomeFlag)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Active)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tags)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Alias)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MetaDesc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MetaKey)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitslnStock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cat.CatId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div aria-label="Page navigation example">
+    <ul class="pagination">
+        <pager class="pagination-lg" list="@Model" asp-area="Admin" asp-controller="AdminProducts" asp-action="Index" />
+    </ul>
+</div>
